@@ -94,8 +94,34 @@
             ],
             "scripts": []
           }
+        },
+        "lint": {
+          "builder": "@angular-eslint/builder:lint",
+          "options": {
+            "lintFilePatterns": [
+              "src/**/*.ts",
+              "src/**/*.html"
+            ]
+          }
+        },
+        "e2e": {
+          "builder": "@puppeteer/ng-schematics:puppeteer",
+          "options": {
+            "devServerTarget": "todo:serve",
+            "testRunner": "jasmine"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "todo:serve:production"
+            }
+          }
         }
       }
     }
+  },
+  "cli": {
+    "schematicCollections": [
+      "@angular-eslint/schematics"
+    ]
   }
 }
